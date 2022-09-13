@@ -67,7 +67,7 @@ model TeachersDisciplines {
 
   Tests Tests[]
 
-  @@map("teachersDisciplines")
+  @@map("teachers_disciplines")
 }
 
 model Tests {
