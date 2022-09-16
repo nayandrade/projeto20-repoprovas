@@ -11,7 +11,7 @@ export async function createtUser(user: IuserBody) {
 
   if (password !== confirmation) {
     throw {
-      type: "conflict",
+      type: "unprocessable_entity",
       message: "Password does not match",
     };
   }
@@ -38,7 +38,7 @@ export async function connectUser(user: userInput) {
 
   if (!hasUser) {
     throw {
-      type: "conflict",
+      type: "not_found",
       message: "User not found, please create an account to continue",
     };
   }
