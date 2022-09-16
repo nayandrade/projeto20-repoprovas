@@ -5,7 +5,10 @@ export function joiValidation(schema: ObjectSchema) {
   return (req: Request, res: Response, next: NextFunction) => {
     const validation = schema.validate(req.body);
     if (validation.error) {
-      return res.status(422).send({ error: validation.error.message });
+      throw {
+        type: "unprocessable_entity",
+        message: validation.error.message,
+      };
     }
 
     next();

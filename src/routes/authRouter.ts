@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { signup, signin } from "../controllers/authControllers";
 import { joiValidation } from "../middlewares/joiValidation";
-import { signupSchema, signinSchema } from "../schemas/schemas"
+import { signupSchema, signinSchema } from "../schemas/schemas";
 
 const authRouter = Router();
 

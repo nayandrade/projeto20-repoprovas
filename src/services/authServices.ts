@@ -7,13 +7,13 @@ import bcrypt from "bcrypt";
 dotenv.config();
 
 export async function createtUser(user: IuserBody) {
-  const { email, password, confirmation} = user;
+  const { email, password, confirmation } = user;
 
   if (password !== confirmation) {
     throw {
-        type: "conflict",
-        message: "Password does not match",
-      };
+      type: "conflict",
+      message: "Password does not match",
+    };
   }
 
   const hasUser = await findUser(email);
@@ -24,10 +24,11 @@ export async function createtUser(user: IuserBody) {
     };
   }
   const encriptedPassword = bcrypt.hashSync(password, 10);
-  await authRepository.create({
+  const newUser = await authRepository.create({
     email: user.email,
     password: encriptedPassword,
   });
+  return newUser;
 }
 
 export async function connectUser(user: userInput) {
