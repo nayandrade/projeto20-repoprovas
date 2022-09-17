@@ -5,3 +5,7 @@ export async function findDiscipline(id: number) {
     where: { id },
   });
 }
+
+export async function getAllDisciplines() {
+  return await prisma.disciplines.findMany();
+}
