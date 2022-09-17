@@ -6,6 +6,12 @@ export async function findDiscipline(id: number) {
   });
 }
 
-export async function getAllDisciplines() {
-  return await prisma.disciplines.findMany();
+// export async function getAllDisciplines() {
+//   return await prisma.disciplines.findMany();
+// }
+
+export async function findDisciplinesByTerm(termId: number) {
+  return await prisma.disciplines.findMany({
+    where: { termId },
+  });
 }

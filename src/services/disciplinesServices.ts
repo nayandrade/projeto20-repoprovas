@@ -4,6 +4,10 @@ export async function findDiscipline(disciplineId: number) {
   return disciplinesRepository.findDiscipline(disciplineId);
 }
 
-export async function findAllDisciplines() {
-  return disciplinesRepository.getAllDisciplines();
+// export async function findAllDisciplines() {
+//   return disciplinesRepository.getAllDisciplines();
+// }
+
+export async function findDisciplinesByTerm(termId: number) {
+  return disciplinesRepository.findDisciplinesByTerm(termId)
 }
