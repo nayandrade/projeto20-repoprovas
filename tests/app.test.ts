@@ -6,11 +6,6 @@ import passwordFactory from "./factories/passwordFactory"
 
 beforeEach(async () => {
   await prisma.$executeRaw`TRUNCATE TABLE users`;
-  await prisma.$executeRaw`TRUNCATE TABLE categories CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE teachers CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE terms CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE disciplines CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE teachers_disciplines CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE tests CASCADE`;
 });
 
