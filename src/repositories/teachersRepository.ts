@@ -5,3 +5,7 @@ export async function findTeacher(id: number) {
     where: { id },
   });
 }
+
+export async function findAllTeachers() {
+  return prisma.teachers.findMany()
+}
