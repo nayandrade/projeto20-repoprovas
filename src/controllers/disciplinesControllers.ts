@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import * as disciplineServices from "../services/disciplineServices";
+import * as disciplinesServices from "../services/disciplinesServices";
 
 export async function findAllDisciplines(req: Request, res: Response) {
-  const disciplines = await disciplineServices.findAllDisciplines();
+  const disciplines = await disciplinesServices.findAllDisciplines();
   res.status(200).send(disciplines);
 }

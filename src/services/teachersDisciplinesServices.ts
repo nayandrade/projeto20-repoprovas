@@ -1,4 +1,4 @@
-import * as teacherDisciplineRepository from "../repositories/teacherDisciplinesRepository";
+import * as teacherDisciplineRepository from "../repositories/teachersDisciplinesRepository";
 
 export async function findTeacherDisciplines(
   teacherId: number,

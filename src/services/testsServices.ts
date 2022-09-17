@@ -1,14 +1,14 @@
 import { ItestBody } from "../types/testTypes";
-import * as categoryServices from "../services/categoryServices";
-import * as disciplineServices from "../services/disciplineServices";
-import * as teacherServices from "../services/teacherServices";
-import * as teacherDisciplinesServices from "../services/teacherDisciplinesServices";
-import * as testRepository from "../repositories/testRepository";
+import * as categoriesServices from "./categoriesServices";
+import * as disciplinesServices from "./disciplinesServices";
+import * as teachersServices from "./teachersServices";
+import * as teachersDisciplinesServices from "./teachersDisciplinesServices";
+import * as testsRepository from "../repositories/testsRepository";
 
 export async function createtTest(newTestData: ItestBody) {
   const { name, pdfUrl, categoryId, teacherId, disciplineId } = newTestData;
 
-  const hasCategory = await categoryServices.findCategory(categoryId);
+  const hasCategory = await categoriesServices.findCategory(categoryId);
   if (!hasCategory) {
     throw {
       type: "bad_request",
@@ -16,7 +16,7 @@ export async function createtTest(newTestData: ItestBody) {
     };
   }
 
-  const hasDiscipline = await disciplineServices.findDiscipline(disciplineId);
+  const hasDiscipline = await disciplinesServices.findDiscipline(disciplineId);
   if (!hasDiscipline) {
     throw {
       type: "bad_request",
@@ -24,7 +24,7 @@ export async function createtTest(newTestData: ItestBody) {
     };
   }
 
-  const hasTeacher = await teacherServices.findTeacher(teacherId);
+  const hasTeacher = await teachersServices.findTeacher(teacherId);
   if (!hasTeacher) {
     throw {
       type: "bad_request",
@@ -33,7 +33,7 @@ export async function createtTest(newTestData: ItestBody) {
   }
 
   const teacherDiscipline =
-    await teacherDisciplinesServices.findTeacherDisciplines(
+    await teachersDisciplinesServices.findTeacherDisciplines(
       teacherId,
       disciplineId
     );
@@ -52,5 +52,5 @@ export async function createtTest(newTestData: ItestBody) {
     teacherDisciplineId: teacherDiscipline.id,
   };
 
-  await testRepository.create(newTest);
+  await testsRepository.create(newTest);
 }
