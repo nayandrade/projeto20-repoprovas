@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 import {
   AppError,
   errorTypeToStatusCode,
@@ -11,10 +11,9 @@ export default function errorHandler(
   res: Response,
   next: NextFunction
 ) {
-  //console.log(err);
   if (isAppError(err)) {
     return res.status(errorTypeToStatusCode(err.type)).send(err.message);
   }
 
-  return res.sendStatus(500); 
+  return res.sendStatus(500);
 }
