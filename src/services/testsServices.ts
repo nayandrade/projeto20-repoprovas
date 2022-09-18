@@ -73,5 +73,5 @@ export async function getTestsByTeacher() {
     };
   });
 
-  return tests
+  return tests;
 }
