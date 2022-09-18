@@ -54,3 +54,24 @@ export async function createtTest(newTestData: ItestBody) {
 
   await testsRepository.create(newTest);
 }
+
+export async function getTestsByTerms() {
+  return testsRepository.getTestsByTerms();
+}
+
+export async function getTestsByTeacher() {
+  const data = testsRepository.getTestsByTeacher();
+  const tests = (await data).map((e) => {
+    return {
+      id: e.id,
+      name: e.name,
+      terms: e.TeachersDisciplines.map((discipline) => {
+        return {
+          term: discipline.disciplines.terms,
+        };
+      }),
+    };
+  });
+
+  return tests
+}

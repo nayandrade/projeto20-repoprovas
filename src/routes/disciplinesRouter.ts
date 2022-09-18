@@ -4,7 +4,6 @@ import jwtMiddleware from "../middlewares/jwtMiddleware";
 
 const disciplinesRouter = Router();
 
-// disciplinesRouter.get("/disciplines", jwtMiddleware, findAllDisciplines);
 disciplinesRouter.get("/disciplines/:term", jwtMiddleware, findDisciplinesByTerm);
 
 export default disciplinesRouter;

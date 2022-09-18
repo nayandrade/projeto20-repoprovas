@@ -11,7 +11,7 @@ export default async function jwtMiddleware(
 
   if (!token) {
     throw {
-      type: "not_found",
+      type: "unauthorized",
       message: "No token provided, please login to continue",
     };
   }
@@ -21,7 +21,7 @@ export default async function jwtMiddleware(
     const decoded = jwt.verify(token, SECRET);
     if (!decoded) {
       throw {
-        type: "not_found",
+        type: "unauthorized",
         message: "No token provided, please login to continue",
       };
     }
